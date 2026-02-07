@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
 import { ExternalLink } from "lucide-react";
 
 const projects = [
@@ -13,6 +14,11 @@ const projects = [
 
 const Portfolio = () => (
   <div className="py-20 md:py-28">
+    <SEO
+      title="Our Work & Portfolio | Webor Studio Projects"
+      description="Explore Webor Studio's portfolio of websites, mobile apps, and digital products built for startups and businesses worldwide."
+      canonical="https://weborstudio.com/portfolio"
+    />
     <div className="container mx-auto px-4 lg:px-8">
       <SectionHeading
         tag="Our Work"

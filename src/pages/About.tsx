@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
 import { Target, Heart, Lightbulb } from "lucide-react";
 
 const values = [
@@ -10,6 +11,11 @@ const values = [
 
 const About = () => (
   <div>
+    <SEO
+      title="About Webor Studio | Affordable Digital Solutions for Everyone"
+      description="Learn about Webor Studio's mission to make quality websites & apps accessible to startups and businesses worldwide."
+      canonical="https://weborstudio.com/about"
+    />
     <section className="py-20 md:py-28">
       <div className="container mx-auto px-4 lg:px-8">
         <SectionHeading

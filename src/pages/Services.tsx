@@ -1,6 +1,7 @@
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import PricingCard from "@/components/PricingCard";
+import SEO from "@/components/SEO";
 import { services } from "@/lib/services";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
@@ -58,6 +59,11 @@ const globalPricing = [
 
 const Services = () => (
   <div>
+    <SEO
+      title="WordPress, MERN & App Development Services | Webor Studio"
+      description="Get high-quality WordPress websites, MERN stack apps & mobile applications at low cost. Prices start from ₹4,999 INR."
+      canonical="https://weborstudio.com/services"
+    />
     {/* All Services */}
     <section className="py-20 md:py-28">
       <div className="container mx-auto px-4 lg:px-8">

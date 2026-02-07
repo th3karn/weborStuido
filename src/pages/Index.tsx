@@ -8,10 +8,16 @@ import TechTicker from "@/components/TechTicker";
 import WhyUsSection from "@/components/WhyUsSection";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import CtaSection from "@/components/CtaSection";
+import SEO from "@/components/SEO";
 import { services } from "@/lib/services";
 
 const Index = () => (
   <div>
+    <SEO
+      title="Affordable Website & App Development Company in India | Webor Studio"
+      description="Webor Studio offers affordable WordPress, PHP, MERN websites & mobile apps starting at ₹4,999. Trusted by startups & global clients."
+      canonical="https://weborstudio.com"
+    />
     <HeroSection />
     <TrustSection />
     <TechTicker />
