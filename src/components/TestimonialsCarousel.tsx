@@ -8,30 +8,35 @@ const testimonials = [
     role: "Founder, TechStart India",
     quote: "Webor Studio delivered our website in just 5 days. The quality was on par with agencies charging 10x more. Absolutely worth it!",
     rating: 5,
+    initials: "RS",
   },
   {
     name: "Sarah Mitchell",
     role: "CEO, GreenLeaf Co.",
     quote: "Professional, responsive, and incredibly affordable. Our new website boosted conversions by 40% in the first month.",
     rating: 5,
+    initials: "SM",
   },
   {
     name: "Amit Patel",
     role: "Creator & YouTuber",
     quote: "I needed a portfolio site fast and on budget. Webor Studio nailed it — clean design, mobile-friendly, and SEO-ready.",
     rating: 5,
+    initials: "AP",
   },
   {
     name: "Jessica Wong",
     role: "Owner, Bloom Boutique",
     quote: "From concept to launch, the team was transparent and delivered exactly what was promised. Highly recommend for small businesses!",
     rating: 4,
+    initials: "JW",
   },
   {
     name: "Vikram Desai",
     role: "CTO, DataSync Labs",
     quote: "Their MERN stack expertise is top-notch. Built us a custom dashboard that handles thousands of users flawlessly.",
     rating: 5,
+    initials: "VD",
   },
 ];
 
@@ -56,7 +61,7 @@ const TestimonialsCarousel = () => {
         <Quote className="text-primary" size={20} />
       </div>
 
-      <div className="bg-gradient-card border border-border/40 rounded-2xl p-8 md:p-10 text-center min-h-[260px] flex flex-col justify-center">
+      <div className="bg-gradient-card border border-border/40 rounded-2xl p-8 md:p-10 text-center min-h-[300px] flex flex-col justify-center">
         <AnimatePresence mode="wait">
           <motion.div
             key={current}
@@ -65,6 +70,11 @@ const TestimonialsCarousel = () => {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
           >
+            {/* Avatar */}
+            <div className="w-16 h-16 rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center mx-auto mb-4">
+              <span className="font-display font-bold text-primary text-lg">{t.initials}</span>
+            </div>
+
             <div className="flex justify-center gap-1 mb-4">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star
