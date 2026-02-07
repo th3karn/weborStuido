@@ -1,6 +1,7 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import SectionHeading from "@/components/SectionHeading";
+import SEO from "@/components/SEO";
 import { Mail, MessageCircle, Instagram, Send } from "lucide-react";
 import { toast } from "sonner";
 
@@ -15,6 +16,11 @@ const Contact = () => {
 
   return (
     <div className="py-20 md:py-28">
+      <SEO
+        title="Contact Webor Studio | Affordable Website & App Developers"
+        description="Looking to build a website or app? Contact Webor Studio today for affordable, high-quality development services."
+        canonical="https://weborstudio.com/contact"
+      />
       <div className="container mx-auto px-4 lg:px-8">
         <SectionHeading
           tag="Contact"
