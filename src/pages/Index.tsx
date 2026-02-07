@@ -4,6 +4,7 @@ import { ArrowRight, Zap, DollarSign, Clock, Users, Layers, CheckCircle, Shield,
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import TechTicker from "@/components/TechTicker";
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { services } from "@/lib/services";
 
 const trustBadges = [
@@ -131,6 +132,18 @@ const Index = () => (
             </motion.div>
           ))}
         </div>
+      </div>
+    </section>
+
+    {/* Testimonials */}
+    <section className="py-20 md:py-28">
+      <div className="container mx-auto px-4 lg:px-8">
+        <SectionHeading
+          tag="Testimonials"
+          title="What Our Clients Say"
+          description="Real feedback from startups and businesses we've worked with."
+        />
+        <TestimonialsCarousel />
       </div>
     </section>
 
