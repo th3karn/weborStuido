@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Mail, MessageCircle } from "lucide-react";
+import { Instagram, Mail, MessageCircle, Youtube } from "lucide-react";
 
 const Footer = () => (
   <footer className="border-t border-border bg-card/40">
@@ -11,7 +11,7 @@ const Footer = () => (
             <span className="text-foreground">Studio</span>
           </Link>
           <p className="text-muted-foreground text-sm mt-3 max-w-sm leading-relaxed">
-            Building websites, apps & digital products that grow your business. Quality solutions at affordable prices.
+            Professional quality. Honest pricing. Real results. Websites starting at ₹4,999.
           </p>
           <div className="flex gap-4 mt-4">
             <a href="https://instagram.com/webor_studio" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Instagram">
@@ -22,6 +22,9 @@ const Footer = () => (
             </a>
             <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="WhatsApp">
               <MessageCircle size={20} />
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors" aria-label="YouTube">
+              <Youtube size={20} />
             </a>
           </div>
         </div>
