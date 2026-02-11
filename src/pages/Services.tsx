@@ -4,7 +4,7 @@ import PricingCard from "@/components/PricingCard";
 import SEO from "@/components/SEO";
 import { services } from "@/lib/services";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Server, Headphones } from "lucide-react";
 import { motion } from "framer-motion";
 
 const wordpressPricing = [
@@ -64,8 +64,63 @@ const Services = () => (
       description="Get high-quality WordPress websites, MERN stack apps & mobile applications at low cost. Prices start from ₹4,999 INR."
       canonical="https://weborstudio.com/services"
     />
-    {/* All Services */}
+    {/* Free Hosting & Support Features */}
     <section className="py-20 md:py-28">
+      <div className="container mx-auto px-4 lg:px-8">
+        <SectionHeading
+          tag="🎁 What You Get Free"
+          title="Unmatched Value with Every Project"
+          description="We don't just build — we support. Every project comes with free hosting and long-term customer support."
+        />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+          {[
+            {
+              icon: Server,
+              title: "3 Years Free Hosting",
+              subtitle: "WordPress Websites",
+              description: "Every WordPress website comes with 3 years of free, fast & secure hosting — no hidden charges.",
+              highlight: "3 Years",
+            },
+            {
+              icon: Server,
+              title: "2 Years Free Hosting",
+              subtitle: "MERN / Django / Custom Sites",
+              description: "All custom-built websites (MERN, Django, PHP) include 2 years of free reliable hosting.",
+              highlight: "2 Years",
+            },
+            {
+              icon: Headphones,
+              title: "3 Years Customer Support",
+              subtitle: "All Projects",
+              description: "Get 3 years of dedicated customer support for every project — bug fixes, updates & guidance included.",
+              highlight: "3 Years",
+            },
+          ].map((item, i) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
+              className="relative bg-gradient-card border border-border/60 rounded-2xl p-6 md:p-8 hover:border-primary/40 hover:shadow-glow hover:-translate-y-1 transition-all duration-500 text-center"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                <item.icon className="text-primary" size={26} />
+              </div>
+              <span className="inline-block bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full mb-3">
+                {item.highlight}
+              </span>
+              <h3 className="font-display font-bold text-lg mb-1">{item.title}</h3>
+              <p className="text-xs text-primary/70 font-semibold mb-2">{item.subtitle}</p>
+              <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* All Services */}
+    <section className="py-20 md:py-28 bg-card/30">
       <div className="container mx-auto px-4 lg:px-8">
         <SectionHeading
           tag="Our Services"
