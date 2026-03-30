@@ -1,12 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import Lenis from "lenis";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import gsapInstance from "gsap";
 import { ScrollTrigger as ScrollTriggerInstance } from "gsap/ScrollTrigger";
 
 gsapInstance.registerPlugin(ScrollTriggerInstance);
 
 export const Layout = () => {
+  const { pathname } = useLocation();
+  const lenisRef = useRef<Lenis | null>(null);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -17,6 +20,7 @@ export const Layout = () => {
       wheelMultiplier: 1,
       touchMultiplier: 2,
     });
+    lenisRef.current = lenis;
 
     lenis.on('scroll', ScrollTriggerInstance.update);
 
@@ -28,9 +32,18 @@ export const Layout = () => {
 
     return () => {
       lenis.destroy();
+      lenisRef.current = null;
       gsapInstance.ticker.remove((time) => lenis.raf(time * 1000));
     };
   }, []);
+
+  useEffect(() => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]);
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/30">
