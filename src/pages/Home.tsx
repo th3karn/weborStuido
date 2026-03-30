@@ -161,19 +161,50 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-32 px-6 relative z-10 mb-20 cursor-default">
-        <GlassCard glow="purple" className="max-w-6xl mx-auto text-center py-24 px-6 md:px-20 !rounded-[4rem] bg-gradient-to-br from-primary/10 to-blue-500/10 border-primary/20">
-          <h2 className="text-5xl md:text-7xl font-bold mb-8">Ready to <span className="text-gradient">Innovate?</span></h2>
-          <p className="text-xl text-white/60 max-w-2xl mx-auto mb-12">Join industry leaders who trust us to build their next-generation digital platforms.</p>
-          <Link to="/contact">
-            <MagneticButton>
-              <button className="px-12 py-6 rounded-2xl bg-primary text-white text-xl neon-glow hover:bg-primary/90 transition-colors">
-                Start Your Project Now
-              </button>
-            </MagneticButton>
-          </Link>
-        </GlassCard>
+      {/* Ultimate CTA Portal Section */}
+      <section className="py-24 px-6 md:px-12 relative z-10 mb-20 cursor-default">
+        <div className="max-w-5xl mx-auto relative group">
+          {/* External Massive Glow */}
+          <div className="absolute -inset-3 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-[4rem] blur-[80px] opacity-30 group-hover:opacity-50 transition-opacity duration-1000 z-0"></div>
+          
+          <div className="relative text-center py-20 px-6 md:px-16 !rounded-[3rem] bg-[#0a0a0a]/80 backdrop-blur-3xl border border-white/10 overflow-hidden shadow-2xl z-10">
+            {/* Internal Animated Nebulas */}
+            <div className="absolute top-0 left-0 w-[350px] h-[350px] bg-purple-500/20 blur-[120px] rounded-full pointer-events-none mix-blend-screen animate-pulse"></div>
+            <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-cyan-500/20 blur-[120px] rounded-full pointer-events-none mix-blend-screen animate-pulse" style={{ animationDelay: '2s' }}></div>
+
+            {/* Decorative Grid/Lines */}
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:radial-gradient(circle,white,transparent_80%)] opacity-30 pointer-events-none"></div>
+            
+            <div className="relative z-20">
+              <span className="inline-block py-1.5 px-5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-cyan-400 font-bold tracking-[0.2em] text-[10px] md:text-xs mb-8 uppercase shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                The Future Awaits
+              </span>
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tighter uppercase leading-[1.1] text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Ignite</span> <br /> Your Empire?
+              </h2>
+              <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto mb-10 font-light">
+                Join the vanguard of digital evolution. Stop settling for templates and start building legacies.
+              </p>
+              
+              <div className="relative inline-block group/btn cursor-pointer">
+                {/* Button Outer Glow */}
+                <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-cyan-400 rounded-full blur-[15px] opacity-70 group-hover/btn:opacity-100 group-hover/btn:blur-[25px] transition-all duration-500 animate-pulse pointer-events-none"></div>
+                
+                <Link to="/contact" className="relative z-10 block">
+                  <MagneticButton>
+                    <button className="px-8 md:px-12 py-4 md:py-5 rounded-full bg-black/90 border border-white/20 text-white font-bold text-base md:text-lg tracking-wide uppercase overflow-hidden relative group-hover/btn:border-white/50 transition-all duration-500">
+                      <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-cyan-400/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500"></div>
+                      <span className="relative z-10 flex items-center justify-center gap-3">
+                        Start Your Project 
+                        <ArrowRight size={20} className="group-hover/btn:translate-x-2 transition-transform duration-300 shadow-[0_0_15px_currentColor]" />
+                      </span>
+                    </button>
+                  </MagneticButton>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
   );
