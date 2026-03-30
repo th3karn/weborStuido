@@ -1,214 +1,61 @@
-import SectionHeading from "@/components/SectionHeading";
-import ServiceCard from "@/components/ServiceCard";
-import PricingCard from "@/components/PricingCard";
-import SEO from "@/components/SEO";
-import { services } from "@/lib/services";
-import { Link } from "react-router-dom";
-import { ArrowRight, Server, Headphones } from "lucide-react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { Layers, Monitor, Smartphone, Cloud, Shield, Zap } from "lucide-react";
+import { MagneticButton } from "../components/MagneticButton";
 
-const wordpressPricing = [
-  {
-    title: "Starter",
-    price: "₹4,999",
-    features: ["1–3 Pages", "Mobile Responsive", "Basic SEO", "Contact Form", "Fast Delivery"],
-  },
-  {
-    title: "Professional",
-    price: "₹9,999",
-    popular: true,
-    features: ["5–7 Pages", "Premium UI Design", "SEO Optimized", "Speed Optimized", "WhatsApp Integration"],
-  },
-  {
-    title: "Business / Premium",
-    price: "₹19,999",
-    features: ["10+ Pages", "Custom Design", "Advanced SEO", "Security Setup", "Payment Integration"],
-  },
+const services = [
+  { icon: <Monitor size={32} />, title: "Web Application Development", desc: "We build scalable, high-performance web applications using React, Next.js, and Node.js." },
+  { icon: <Smartphone size={32} />, title: "Mobile App Development", desc: "Native and cross-platform mobile experiences that users love, built on React Native and Swift." },
+  { icon: <Layers size={32} />, title: "UI/UX Design", desc: "Apple-level aesthetics, focusing on typography, whitespace, and buttery-smooth micro-interactions." },
+  { icon: <Cloud size={32} />, title: "Cloud Solutions", desc: "Enterprise-grade cloud architectures on AWS and Google Cloud for maximum reliability." },
+  { icon: <Shield size={32} />, title: "Cybersecurity", desc: "Robust security audits and implementations, ensuring your digital assets are impenetrable." },
+  { icon: <Zap size={32} />, title: "AI Integration", desc: "Smart AI automation and LLM integrations to give your business a futuristic competitive edge." }
 ];
 
-const otherPricing = [
-  {
-    title: "PHP / MERN Stack Websites",
-    price: "From ₹19,999",
-    features: ["Custom Backend", "Secure APIs", "Admin Panel", "Database Integration", "Fully Scalable Architecture"],
-  },
-  {
-    title: "Mobile Apps (Android / iOS)",
-    price: "From ₹29,999",
-    features: ["Modern UI/UX", "API Integration", "Authentication", "Play Store Ready", "Performance Optimized"],
-  },
-];
+export default function Services() {
+  const containerRef = useRef(null);
 
-const globalPricing = [
-  {
-    title: "Websites",
-    price: "From $799",
-    features: ["WordPress or Custom Stack", "Premium UI Design", "SEO & Speed Optimized", "Responsive on All Devices", "Post-Delivery Support"],
-  },
-  {
-    title: "Custom Web Apps & SaaS",
-    price: "On Request",
-    features: ["Custom Architecture", "Scalable Backend", "Admin Dashboard", "API Development", "Dedicated Project Manager"],
-  },
-  {
-    title: "Mobile Apps",
-    price: "From $1,199",
-    features: ["Android & iOS", "Modern UI/UX", "API Integration", "App Store Deployment", "Performance Optimized"],
-  },
-];
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(".page-title", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, ease: "power3.out" });
+      gsap.fromTo(".service-item", 
+        { y: 50, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: "power3.out", delay: 0.3 }
+      );
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
 
-const Services = () => (
-  <div>
-    <SEO
-      title="WordPress, MERN & App Development Services | Webor Studio"
-      description="Get high-quality WordPress websites, MERN stack apps & mobile applications at low cost. Prices start from ₹4,999 INR."
-      canonical="https://weborstudio.com/services"
-    />
-    {/* Free Hosting & Support Features */}
-    <section className="py-20 md:py-28">
-      <div className="container mx-auto px-4 lg:px-8">
-        <SectionHeading
-          tag="🎁 What You Get Free"
-          title="Unmatched Value with Every Project"
-          description="We don't just build — we support. Every project comes with free hosting and long-term customer support."
-        />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          {[
-            {
-              icon: Server,
-              title: "3 Years Free Hosting",
-              subtitle: "WordPress Websites",
-              description: "Every WordPress website comes with 3 years of free, fast & secure hosting — no hidden charges.",
-              highlight: "3 Years",
-            },
-            {
-              icon: Server,
-              title: "2 Years Free Hosting",
-              subtitle: "MERN / Django / Custom Sites",
-              description: "All custom-built websites (MERN, Django, PHP) include 2 years of free reliable hosting.",
-              highlight: "2 Years",
-            },
-            {
-              icon: Headphones,
-              title: "3 Years Customer Support",
-              subtitle: "All Projects",
-              description: "Get 3 years of dedicated customer support for every project — bug fixes, updates & guidance included.",
-              highlight: "3 Years",
-            },
-          ].map((item, i) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="relative bg-gradient-card border border-border/60 rounded-2xl p-6 md:p-8 hover:border-primary/40 hover:shadow-glow hover:-translate-y-1 transition-all duration-500 text-center"
-            >
-              <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <item.icon className="text-primary" size={26} />
-              </div>
-              <span className="inline-block bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full mb-3">
-                {item.highlight}
-              </span>
-              <h3 className="font-display font-bold text-lg mb-1">{item.title}</h3>
-              <p className="text-xs text-primary/70 font-semibold mb-2">{item.subtitle}</p>
-              <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-            </motion.div>
-          ))}
-        </div>
+  return (
+    <div ref={containerRef} className="pt-32 pb-20 px-6 max-w-7xl mx-auto min-h-screen">
+      <div className="text-center mb-20 max-w-3xl mx-auto">
+        <h1 className="page-title text-5xl md:text-7xl font-bold mb-6">Our <span className="text-gradient">Services</span></h1>
+        <p className="page-title text-white/50 text-xl">We provide end-to-end digital solutions, combining futuristic design with robust, scalable engineering.</p>
       </div>
-    </section>
 
-    {/* All Services */}
-    <section className="py-20 md:py-28 bg-card/30">
-      <div className="container mx-auto px-4 lg:px-8">
-        <SectionHeading
-          tag="Our Services"
-          title="Everything You Need to Go Digital"
-          description="From concept to launch, we handle every aspect of your digital presence. Choose from our comprehensive range of services."
-        />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((s, i) => (
-            <ServiceCard key={s.title} icon={s.icon} title={s.title} description={s.description} index={i} />
-          ))}
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map((srv, i) => (
+          <div key={i} className="service-item glass-card p-10 rounded-[2rem] hover:-translate-y-4 transition-transform duration-500 group border border-white/5 hover:border-primary/30">
+            <div className="w-16 h-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:neon-glow transition-all duration-300">
+              {srv.icon}
+            </div>
+            <h3 className="text-2xl font-semibold mb-3 text-white">{srv.title}</h3>
+            <p className="text-white/60 leading-relaxed mb-8">{srv.desc}</p>
+            <MagneticButton className="px-6 py-2 border border-white/20 text-white/80 hover:text-white hover:border-white/50 bg-transparent text-sm">
+              Learn More
+            </MagneticButton>
+          </div>
+        ))}
       </div>
-    </section>
-
-    {/* WordPress Pricing */}
-    <section className="py-20 md:py-28 bg-card/30">
-      <div className="container mx-auto px-4 lg:px-8">
-        <SectionHeading
-          tag="💻 WordPress Websites"
-          title="Website Development Pricing"
-          description="Perfect for businesses, portfolios, landing pages & blogs. Get started with affordable plans."
-        />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          {wordpressPricing.map((p, i) => (
-            <PricingCard key={p.title} {...p} index={i} />
-          ))}
-        </div>
+      
+      <div className="mt-32 glass-card p-16 rounded-[3rem] text-center service-item border border-primary/20 neon-glow relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-blue-500/10 pointer-events-none" />
+        <h2 className="text-4xl font-bold mb-6 relative z-10">Ready to build something incredible?</h2>
+        <p className="text-xl text-white/70 mb-10 max-w-2xl mx-auto relative z-10">Let's discuss how our services can transform your business trajectory.</p>
+        <MagneticButton className="px-10 py-5 bg-primary text-white text-lg font-medium neon-glow relative z-10 hover:bg-primary/90">
+          Book a Free Consultation
+        </MagneticButton>
       </div>
-    </section>
-
-    {/* Custom & App Pricing */}
-    <section className="py-20 md:py-28">
-      <div className="container mx-auto px-4 lg:px-8">
-        <SectionHeading
-          tag="🚀 Custom Solutions"
-          title="Custom Web & Mobile App Pricing"
-          description="Best for custom dashboards, SaaS, portals & scalable platforms."
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-          {otherPricing.map((p, i) => (
-            <PricingCard key={p.title} {...p} index={i} />
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {/* Global Pricing */}
-    <section className="py-20 md:py-28 bg-card/30">
-      <div className="container mx-auto px-4 lg:px-8">
-        <SectionHeading
-          tag="🌍 For Global Clients"
-          title="Pricing for USA / UK / International"
-          description="World-class quality at competitive global rates. All prices in USD."
-        />
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          {globalPricing.map((p, i) => (
-            <PricingCard key={p.title} {...p} index={i} />
-          ))}
-        </div>
-      </div>
-    </section>
-
-    {/* CTA */}
-    <section className="pb-20 md:pb-28">
-      <div className="container mx-auto px-4 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="bg-gradient-card border border-border/60 rounded-2xl p-10 md:p-14"
-        >
-          <h3 className="font-display text-2xl md:text-3xl font-bold mb-3">
-            Need a custom solution?
-          </h3>
-          <p className="text-muted-foreground mb-6">
-            We'll build exactly what your business needs. Let's discuss your project.
-          </p>
-          <Link
-            to="/contact"
-            className="bg-gradient-primary text-primary-foreground px-8 py-3.5 rounded-lg font-semibold hover:opacity-90 transition-opacity inline-flex items-center gap-2"
-          >
-            Get a Quote <ArrowRight size={18} />
-          </Link>
-        </motion.div>
-      </div>
-    </section>
-  </div>
-);
-
-export default Services;
+    </div>
+  );
+}

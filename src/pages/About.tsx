@@ -1,65 +1,81 @@
-import { motion } from "framer-motion";
-import SectionHeading from "@/components/SectionHeading";
-import SEO from "@/components/SEO";
-import { Target, Heart, Lightbulb } from "lucide-react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { AnimatedCounter } from "../components/ui/AnimatedCounter";
+import { GlassCard } from "../components/ui/GlassCard";
 
-const values = [
-  { icon: Target, title: "Mission-Driven", desc: "We exist to help businesses of all sizes succeed in the digital world — no gatekeeping, no inflated prices." },
-  { icon: Heart, title: "Client-First", desc: "Every project starts with understanding your goals. We don't just build — we partner with you for long-term success." },
-  { icon: Lightbulb, title: "Innovation", desc: "We stay ahead of technology trends so your products are built with the best tools and practices available." },
-];
+export default function About() {
+  const containerRef = useRef(null);
 
-const About = () => (
-  <div>
-    <SEO
-      title="About Webor Studio | Affordable Digital Solutions for Everyone"
-      description="Learn about Webor Studio's mission to make quality websites & apps accessible to startups and businesses worldwide."
-      canonical="https://weborstudio.com/about"
-    />
-    <section className="py-20 md:py-28">
-      <div className="container mx-auto px-4 lg:px-8">
-        <SectionHeading
-          tag="About Us"
-          title="We're Webor Studio"
-          description="A technology and creative services company on a mission to make quality digital solutions accessible to everyone."
-        />
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(".about-el", 
+        { y: 60, opacity: 0 }, 
+        { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power4.out" }
+      );
+    }, containerRef);
+    return () => ctx.revert();
+  }, []);
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto text-center mb-16"
-        >
-          <p className="text-muted-foreground leading-relaxed mb-4">
-            Webor Studio was founded with a simple belief: every startup, creator, and small business deserves access to world-class digital solutions — without breaking the bank.
-          </p>
-          <p className="text-muted-foreground leading-relaxed">
-            We specialize in end-to-end digital services — from stunning websites and powerful mobile apps to creative design and AI-driven automation. Our team combines technical expertise with creative thinking to deliver products that truly make a difference.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {values.map((v, i) => (
-            <motion.div
-              key={v.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="bg-gradient-card border border-border/60 rounded-xl p-6 text-center"
-            >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <v.icon className="text-primary" size={24} />
-              </div>
-              <h3 className="font-display font-semibold text-lg mb-2">{v.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{v.desc}</p>
-            </motion.div>
-          ))}
-        </div>
+  return (
+    <div ref={containerRef} className="pt-40 pb-32 px-6 max-w-7xl mx-auto min-h-screen relative z-10">
+      <div className="text-center mb-24 max-w-5xl mx-auto">
+        <h1 className="about-el text-6xl md:text-8xl font-bold mb-8 tracking-tighter">We don't follow trends. <br/><span className="text-gradient italic pr-2">We design them.</span></h1>
+        <p className="about-el text-white/50 text-2xl leading-relaxed font-light mt-10">
+          Webor Studio was founded with a singular vision: to bring Apple-tier aesthetics and highly scalable engineering to emerging startups and global enterprises. We believe that software shouldn't just work—it should be an experience.
+        </p>
       </div>
-    </section>
-  </div>
-);
 
-export default About;
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-40 about-el">
+        {[
+          { label: "Projects Delivered", num: 250, suffix: "+" },
+          { label: "Global Clients", num: 50, suffix: "+" },
+          { label: "Design Awards", num: 12, suffix: "" },
+          { label: "Years Experience", num: 10, suffix: "+" },
+        ].map((stat, i) => (
+          <GlassCard key={i} className="p-10 rounded-[2.5rem] text-center hover:-translate-y-2 transition-transform duration-500">
+            <h3 className="text-5xl md:text-6xl font-bold text-gradient mb-4">
+              <AnimatedCounter end={stat.num} suffix={stat.suffix} />
+            </h3>
+            <p className="text-white/50 font-bold uppercase tracking-widest text-xs">{stat.label}</p>
+          </GlassCard>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center about-el">
+        <div>
+          <h2 className="text-5xl font-bold mb-8 tracking-tight">Our <span className="text-gradient">Philosophy</span></h2>
+          <p className="text-white/50 text-xl leading-relaxed mb-10 font-light">
+            In a digital world crowded with templates and mediocrity, standing out requires 
+            more than just functionality. It requires an emotional connection. We focus on smooth animations, deep interactive 3D elements, and zero latency.
+          </p>
+          <ul className="space-y-6 text-white/80 font-medium text-lg">
+            <li className="flex items-center gap-4">
+              <span className="w-12 h-12 bg-primary/10 rounded-full border border-primary/30 flex items-center justify-center neon-glow shrink-0">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+              </span>
+              Total Transparency & Partnership
+            </li>
+            <li className="flex items-center gap-4">
+              <span className="w-12 h-12 bg-blue-500/10 rounded-full border border-blue-500/30 flex items-center justify-center neon-glow shrink-0">
+                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
+              </span>
+              Uncompromised Web Performance
+            </li>
+            <li className="flex items-center gap-4">
+              <span className="w-12 h-12 bg-purple-500/10 rounded-full border border-purple-500/30 flex items-center justify-center neon-glow shrink-0">
+                <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" />
+              </span>
+              Aesthetic Dominance Globally
+            </li>
+          </ul>
+        </div>
+        
+        <GlassCard className="rounded-[3rem] overflow-hidden h-[600px] border border-white/10 relative group p-0 hidden lg:block">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1000&q=80" alt="Team collaborating" className="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-blue-500/10 mix-blend-overlay"></div>
+          <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-[3rem] pointer-events-none" />
+        </GlassCard>
+      </div>
+    </div>
+  );
+}
