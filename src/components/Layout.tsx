@@ -49,17 +49,17 @@ export const Layout = () => {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/30">
       <header className="fixed top-0 w-full z-50 glass-card border-b-0 py-4 px-6 md:px-12 transition-all duration-300">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link to="/" className="text-2xl font-semibold tracking-tighter text-gradient font-heading">
+          <Link to="/" className="text-3xl font-semibold tracking-tighter text-gradient font-heading">
             Webor<span className="text-white">Studio</span>.
           </Link>
-          <nav className="hidden md:flex gap-8 text-sm font-medium text-white/70">
+          <nav className="hidden md:flex gap-8 text-lg font-medium text-white/70">
             <Link to="/services" className="hover:text-white transition-colors">Services</Link>
             <Link to="/pricing" className="hover:text-white transition-colors">Pricing</Link>
             <Link to="/portfolio" className="hover:text-white transition-colors">Portfolio</Link>
             <Link to="/about" className="hover:text-white transition-colors">About</Link>
           </nav>
           <div className="flex items-center gap-4">
-            <Link to="/contact" className="hidden md:flex px-6 py-2 rounded-full bg-blue-500/20 hover:bg-blue-500/40 text-white border border-blue-500/50 transition-all shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)]">
+            <Link to="/contact" className="hidden md:flex px-8 py-3 text-lg rounded-full bg-blue-500/20 hover:bg-blue-500/40 text-white border border-blue-500/50 transition-all shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)]">
               Let's Talk
             </Link>
           </div>
