@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, Icosahedron, Stars, RoundedBox, Sphere } from "@react-three/drei";
+import { Float, Icosahedron, Stars, RoundedBox, PerformanceMonitor, Preload } from "@react-three/drei";
 import * as THREE from "three";
 
 // Reusable glass material mapped to the trusted premium blue/cyan tokens
@@ -94,9 +94,13 @@ const AbstractShape = ({ position, scale, speed, rotationIntensity }: any) => {
 };
 
 export default function ThreeBackground() {
+  const [dpr, setDpr] = useState(1.5);
+
   return (
     <div className="absolute inset-0 z-0 h-full w-full pointer-events-auto">
-      <Canvas camera={{ position: [0, 0, 10], fov: 45 }} dpr={[1, 2]} gl={{ powerPreference: "high-performance", antialias: true }}>
+      <Canvas camera={{ position: [0, 0, 10], fov: 45 }} dpr={dpr} gl={{ powerPreference: "high-performance", antialias: true }}>
+        <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)} />
+        
         <ambientLight intensity={0.8} />
         <directionalLight position={[10, 10, 10]} intensity={2} color="#06B6D4" />
         <directionalLight position={[-10, -10, -10]} intensity={1.5} color="#3B82F6" />
@@ -112,6 +116,8 @@ export default function ThreeBackground() {
         
         {/* Depth Particles */}
         <Stars radius={50} depth={50} count={1200} factor={3} saturation={0.5} fade speed={0.5} />
+        
+        <Preload all />
       </Canvas>
     </div>
   );
