@@ -54,7 +54,7 @@ export default function Pricing() {
   }, [currency]);
 
   return (
-    <div ref={containerRef} className="pt-40 pb-32 px-6 max-w-7xl mx-auto min-h-screen relative w-full overflow-hidden">
+    <div ref={containerRef} className="pt-48 pb-40 px-6 max-w-7xl mx-auto min-h-screen relative w-full overflow-hidden">
       
       {/* Background Ambient Glows */}
       <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-blue-600/10 blur-[150px] rounded-full pointer-events-none z-0" />
@@ -127,7 +127,7 @@ export default function Pricing() {
       </div>
 
       {/* Advanced Tiers */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto relative z-10 pricing-card">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto relative z-10 pricing-card pt-12">
         <div className="p-8 rounded-3xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10 backdrop-blur-xl group hover:border-blue-500/30 transition-all duration-500">
           <h3 className="text-2xl font-bold text-white mb-2">PHP / MERN Stack</h3>
           <p className="text-sm text-white/50 mb-6 font-light">Custom dashboards, SaaS, portals & scalable platforms.</p>

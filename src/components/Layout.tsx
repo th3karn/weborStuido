@@ -70,7 +70,7 @@ export const Layout = () => {
         <Outlet />
       </main>
 
-      <footer className="w-full relative z-10 glass-card border-t border-white/10 pt-20 pb-10 px-6 md:px-12 mt-20">
+      <footer className="w-full relative z-10 glass-card border-t border-white/10 pt-32 pb-12 px-6 md:px-12 mt-32">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-3xl font-semibold text-gradient mb-4">WeborStudio.</h3>

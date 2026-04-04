@@ -90,8 +90,8 @@ export default function Home() {
       <TechSlider />
 
       {/* Services Section */}
-      <section className="services-section py-32 px-6 md:px-12 max-w-7xl mx-auto relative z-10">
-        <div className="mb-24 text-center md:text-left flex flex-col md:flex-row justify-between items-end gap-10">
+      <section className="services-section py-40 md:py-48 px-6 md:px-12 max-w-7xl mx-auto relative z-10">
+        <div className="mb-32 text-center md:text-left flex flex-col md:flex-row justify-between items-end gap-12">
           <div className="max-w-2xl">
             <h2 className="gsap-fade-up text-5xl md:text-7xl font-bold mb-6 tracking-tight">World-Class <br/><span className="text-gradient">Capabilities.</span></h2>
             <p className="gsap-fade-up text-white/50 text-xl font-light leading-relaxed">We deliver end-to-end digital excellence. From concept to deployment, we build highly scalable and visually stunning solutions.</p>
@@ -119,13 +119,15 @@ export default function Home() {
       </section>
 
       {/* Our Process Timeline */}
-      <ProcessTimeline />
+      <div className="my-20">
+        <ProcessTimeline />
+      </div>
 
       {/* Testimonials */}
-      <section className="py-40 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none" />
+      <section className="py-48 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          <div className="text-center mb-20">
+          <div className="text-center mb-28">
             <h2 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Trusted <span className="text-gradient italic pr-2">Globally</span></h2>
             <p className="text-white/50 text-xl">Don't just take our word for it.</p>
           </div>
@@ -168,10 +170,10 @@ export default function Home() {
       </section>
 
       {/* Ultimate CTA Portal Section */}
-      <section className="py-24 px-6 md:px-12 relative z-10 mb-20 cursor-default">
+      <section className="py-40 px-6 md:px-12 relative z-10 mb-32 cursor-default">
         <div className="max-w-5xl mx-auto relative group">
           {/* External Massive Glow */}
-          <div className="absolute -inset-3 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-[4rem] blur-[80px] opacity-30 group-hover:opacity-50 transition-opacity duration-1000 z-0"></div>
+          <div className="absolute -inset-3 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-[4rem] blur-[100px] opacity-20 group-hover:opacity-40 transition-opacity duration-1000 z-0"></div>
           
           <div className="relative text-center py-20 px-6 md:px-16 !rounded-[3rem] bg-[#0a0a0a]/80 backdrop-blur-3xl border border-white/10 overflow-hidden shadow-2xl z-10">
             {/* Internal Animated Nebulas */}
