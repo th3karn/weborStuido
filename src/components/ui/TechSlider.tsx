@@ -1,16 +1,18 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Bot, Code2, Database, FileJson, Layout, Layers, Server, Terminal } from 'lucide-react';
+import { Code2, Database, FileJson, Layout, Layers, Server, Globe, Box, Cloud, MonitorSmartphone } from 'lucide-react';
 
 const TECH_STACK = [
-  { name: 'HTML5', icon: <Layout className="w-8 h-8" />, color: 'text-orange-500' },
-  { name: 'CSS3', icon: <Layers className="w-8 h-8" />, color: 'text-blue-500' },
+  { name: 'HTML', icon: <Layout className="w-8 h-8" />, color: 'text-orange-500' },
+  { name: 'CSS', icon: <Layers className="w-8 h-8" />, color: 'text-blue-500' },
   { name: 'JavaScript', icon: <FileJson className="w-8 h-8" />, color: 'text-yellow-400' },
+  { name: 'PHP', icon: <Globe className="w-8 h-8" />, color: 'text-indigo-400' },
+  { name: 'MERN', icon: <Box className="w-8 h-8" />, color: 'text-green-400' },
   { name: 'React', icon: <Code2 className="w-8 h-8" />, color: 'text-cyan-400' },
-  { name: 'Next.js', icon: <Terminal className="w-8 h-8" />, color: 'text-white' },
   { name: 'Node.js', icon: <Server className="w-8 h-8" />, color: 'text-green-500' },
   { name: 'MongoDB', icon: <Database className="w-8 h-8" />, color: 'text-green-600' },
-  { name: 'AI Tools', icon: <Bot className="w-8 h-8" />, color: 'text-primary' },
+  { name: 'Firebase', icon: <Cloud className="w-8 h-8" />, color: 'text-yellow-500' },
+  { name: 'WordPress', icon: <MonitorSmartphone className="w-8 h-8" />, color: 'text-blue-400' },
 ];
 
 export const TechSlider = ({ className }: { className?: string }) => {

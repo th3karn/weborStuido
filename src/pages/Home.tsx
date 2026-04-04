@@ -11,7 +11,7 @@ import gsap from "gsap";
 import 'swiper/css';
 import 'swiper/css/effect-fade';
 import 'swiper/css/pagination';
-import { ArrowRight, Star, Code, Layers, Smartphone, Globe } from "lucide-react";
+import { ArrowRight, Star, Code, Layers, Smartphone, Globe, Check } from "lucide-react";
 
 export default function Home() {
   const containerRef = useRef(null);
@@ -44,29 +44,35 @@ export default function Home() {
         <ThreeBackground />
         
         <div className="relative z-10 text-center px-6 max-w-6xl mx-auto flex flex-col items-center justify-center h-full pointer-events-none pb-20 mt-20">
-          <div className="animate-fade-in-up opacity-0 [animation-delay:200ms] mb-8 px-5 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl text-sm font-semibold tracking-wider text-white/80 uppercase shadow-[0_0_20px_rgba(255,255,255,0.05)]">
-            <span className="w-2 h-2 rounded-full bg-primary inline-block mr-3 animate-pulse"></span>
+          <div className="animate-fade-in-up opacity-0 [animation-delay:200ms] mb-8 px-5 py-2 rounded-full border border-blue-500/20 bg-blue-500/10 backdrop-blur-xl text-sm font-semibold tracking-wider text-blue-200 uppercase shadow-[0_0_20px_rgba(59,130,246,0.15)] flex items-center gap-3">
+            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
             Global Digital Agency
           </div>
-          <h1 className="animate-fade-in-up opacity-0 [animation-delay:400ms] text-6xl md:text-8xl lg:text-[7.5rem] font-bold tracking-tighter mb-8 leading-[1.05]">
-            Crafting <span className="text-gradient font-display italic pr-2">Futuristic</span> <br />
-            Digital Realities.
+          <h1 className="animate-fade-in-up opacity-0 [animation-delay:400ms] text-5xl md:text-7xl lg:text-[6.5rem] font-bold tracking-tighter mb-8 leading-[1.05]">
+            We Build Web & Apps That <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 font-display italic pr-2">Convert.</span>
           </h1>
-          <p className="animate-fade-in-up opacity-0 [animation-delay:600ms] text-lg md:text-2xl text-white/60 max-w-3xl mx-auto mb-12 font-light">
-            We build premium, highly trustable web and mobile applications for global enterprises. Seamless 3D, buttery smooth animations, and zero compromise.
+          <p className="animate-fade-in-up opacity-0 [animation-delay:600ms] text-lg md:text-2xl text-white/60 max-w-3xl mx-auto mb-10 font-light">
+            At Webor Studio, we don't just design websites — we create high-performing digital products that help businesses grow online.
           </p>
+          
+          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-12 animate-fade-in-up opacity-0 [animation-delay:700ms] text-sm text-white/70 font-medium">
+            <span className="flex items-center gap-2"><Check size={16} className="text-blue-400" /> Fast Delivery</span>
+            <span className="flex items-center gap-2"><Check size={16} className="text-blue-400" /> Secure Code</span>
+            <span className="flex items-center gap-2"><Check size={16} className="text-blue-400" /> SEO Ready</span>
+          </div>
+
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pointer-events-auto animate-fade-in-up opacity-0 [animation-delay:800ms]">
             <Link to="/contact">
               <MagneticButton>
-                <button className="px-10 py-5 bg-primary text-white hover:bg-primary/90 rounded-2xl text-lg flex items-center gap-3 group transition-colors neon-glow">
-                  Start a Project <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                <button className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full text-lg flex items-center gap-3 group transition-colors shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]">
+                  Get a Quote <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </MagneticButton>
             </Link>
-            <Link to="/portfolio">
+            <Link to="/pricing">
               <MagneticButton>
-                <button className="px-10 py-5 bg-white/5 border border-white/10 rounded-2xl text-white text-lg hover:bg-white/10 transition-colors">
-                  View Portfolio
+                <button className="px-10 py-4 bg-white/5 border border-white/10 rounded-full text-white text-lg hover:bg-white/10 transition-colors">
+                  View Pricing
                 </button>
               </MagneticButton>
             </Link>
@@ -176,24 +182,24 @@ export default function Home() {
             <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:radial-gradient(circle,white,transparent_80%)] opacity-30 pointer-events-none"></div>
             
             <div className="relative z-20">
-              <span className="inline-block py-1.5 px-5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-cyan-400 font-bold tracking-[0.2em] text-[10px] md:text-xs mb-8 uppercase shadow-[0_0_20px_rgba(34,211,238,0.3)]">
-                The Future Awaits
+              <span className="inline-block py-1.5 px-5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-blue-400 font-bold tracking-[0.2em] text-[10px] md:text-xs mb-8 uppercase shadow-[0_0_20px_rgba(59,130,246,0.3)]">
+                Instagram @webor_studio
               </span>
               <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tighter uppercase leading-[1.1] text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-                Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Ignite</span> <br /> Your Empire?
+                Grow Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Business</span> <br /> Online
               </h2>
               <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto mb-10 font-light">
-                Join the vanguard of digital evolution. Stop settling for templates and start building legacies.
+                Follow @webor_studio on Instagram for daily website demos, reels & offers. Professional quality, honest pricing, real results.
               </p>
               
               <div className="relative inline-block group/btn cursor-pointer">
                 {/* Button Outer Glow */}
-                <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-cyan-400 rounded-full blur-[15px] opacity-70 group-hover/btn:opacity-100 group-hover/btn:blur-[25px] transition-all duration-500 animate-pulse pointer-events-none"></div>
+                <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full blur-[15px] opacity-70 group-hover/btn:opacity-100 group-hover/btn:blur-[25px] transition-all duration-500 animate-pulse pointer-events-none"></div>
                 
                 <Link to="/contact" className="relative z-10 block">
                   <MagneticButton>
                     <button className="px-8 md:px-12 py-4 md:py-5 rounded-full bg-black/90 border border-white/20 text-white font-bold text-base md:text-lg tracking-wide uppercase overflow-hidden relative group-hover/btn:border-white/50 transition-all duration-500">
-                      <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-cyan-400/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-400/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500"></div>
                       <span className="relative z-10 flex items-center justify-center gap-3">
                         Start Your Project 
                         <ArrowRight size={20} className="group-hover/btn:translate-x-2 transition-transform duration-300 shadow-[0_0_15px_currentColor]" />

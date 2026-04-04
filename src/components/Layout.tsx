@@ -59,7 +59,7 @@ export const Layout = () => {
             <Link to="/about" className="hover:text-white transition-colors">About</Link>
           </nav>
           <div className="flex items-center gap-4">
-            <Link to="/contact" className="hidden md:flex px-6 py-2 rounded-full bg-primary/20 hover:bg-primary/40 text-primary-foreground border border-primary/50 transition-all shadow-[0_0_15px_rgba(168,85,247,0.3)] hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]">
+            <Link to="/contact" className="hidden md:flex px-6 py-2 rounded-full bg-blue-500/20 hover:bg-blue-500/40 text-white border border-blue-500/50 transition-all shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)]">
               Let's Talk
             </Link>
           </div>
@@ -81,17 +81,18 @@ export const Layout = () => {
           <div>
             <h4 className="text-lg font-medium text-white mb-4">Company</h4>
             <ul className="space-y-2 text-white/60">
-              <li><Link to="/about" className="hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link to="/portfolio" className="hover:text-primary transition-colors">Portfolio</Link></li>
-              <li><Link to="/services" className="hover:text-primary transition-colors">Services</Link></li>
-              <li><Link to="/pricing" className="hover:text-primary transition-colors">Pricing</Link></li>
+              <li><Link to="/about" className="hover:text-blue-400 transition-colors">About Us</Link></li>
+              <li><Link to="/portfolio" className="hover:text-blue-400 transition-colors">Portfolio</Link></li>
+              <li><Link to="/services" className="hover:text-blue-400 transition-colors">Services</Link></li>
+              <li><Link to="/pricing" className="hover:text-blue-400 transition-colors">Pricing</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-lg font-medium text-white mb-4">Resources</h4>
+            <h4 className="text-lg font-medium text-white mb-4">Connect</h4>
             <ul className="space-y-2 text-white/60">
-              <li><Link to="/blog" className="hover:text-primary transition-colors">Blog</Link></li>
-              <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
+              <li><a href="https://instagram.com/webor_studio" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">Instagram</a></li>
+              <li><a href="https://youtube.com/@webor_studio" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors">YouTube</a></li>
+              <li><Link to="/contact" className="hover:text-blue-400 transition-colors">Contact Form</Link></li>
             </ul>
           </div>
         </div>
