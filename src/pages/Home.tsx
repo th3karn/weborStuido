@@ -1,6 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
-import { ThreeBackground } from "../components/ThreeBackground";
+import { ErrorBoundary } from "../components/ErrorBoundary";
+import { WebGLFallback } from "../components/WebGLFallback";
+const ThreeBackground = lazy(() => import("../components/ThreeBackground"));
 import { MagneticButton } from "../components/MagneticButton";
 import { TechSlider } from "../components/ui/TechSlider";
 import { GlassCard } from "../components/ui/GlassCard";
@@ -18,14 +20,17 @@ export default function Home() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Scroll triggers
-      gsap.fromTo(".gsap-fade-up",
-        { y: 60, opacity: 0 },
-        {
-          y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power3.out",
-          scrollTrigger: { trigger: ".services-section", start: "top 75%" }
-        }
-      );
+      try {
+        gsap.fromTo(".gsap-fade-up",
+          { y: 60, opacity: 0 },
+          {
+            y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power3.out",
+            scrollTrigger: { trigger: ".services-section", start: "top 75%" }
+          }
+        );
+      } catch (error) {
+        console.error("GSAP Initialization failed, falling back to static UI:", error);
+      }
     }, containerRef);
     return () => ctx.revert();
   }, []);
@@ -41,7 +46,11 @@ export default function Home() {
     <div className="w-full relative bg-background" ref={containerRef}>
       {/* Hero Section */}
       <section className="relative h-screen min-h-[800px] w-full flex items-center justify-center overflow-hidden">
-        <ThreeBackground />
+        <ErrorBoundary fallback={<WebGLFallback />}>
+          <Suspense fallback={<WebGLFallback />}>
+            <ThreeBackground />
+          </Suspense>
+        </ErrorBoundary>
         
         <div className="relative z-10 text-center px-6 max-w-6xl mx-auto flex flex-col items-center justify-center h-full pointer-events-none pb-20 mt-20">
           <div className="animate-fade-in-up opacity-0 [animation-delay:200ms] mb-8 px-5 py-2 rounded-full border border-blue-500/20 bg-blue-500/10 backdrop-blur-xl text-sm font-semibold tracking-wider text-blue-200 uppercase shadow-[0_0_20px_rgba(59,130,246,0.15)] flex items-center gap-3">
