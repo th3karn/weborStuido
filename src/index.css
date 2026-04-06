@@ -116,3 +116,11 @@ html.lenis, html.lenis body {
 ::-webkit-scrollbar-track { background: #0e0e0f; }
 ::-webkit-scrollbar-thumb { background: #262627; border-radius: 10px; }
 
+.kinetic-glow { background: linear-gradient(135deg, #97a9ff, #c180ff); }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-scroll { animation: scroll 30s linear infinite; }
+
