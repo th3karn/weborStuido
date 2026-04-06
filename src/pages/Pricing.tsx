@@ -1,8 +1,13 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
 export default function Pricing() {
   return (
     <main className="pt-32 pb-24 px-6 md:px-12 lg:px-24">
+      <Helmet>
+        <title>Pricing | Webor Studio</title>
+        <meta name="description" content="Transparent pricing for WordPress, MERN, and App development. Start your digital journey with Webor Studio." />
+      </Helmet>
       {/* Hero Section */}
       <header className="max-w-4xl mx-auto text-center mb-20">
         <span className="text-[#c180ff] font-label uppercase tracking-[0.3em] text-xs font-bold mb-4 block">Tailored Investment Tiers</span>
@@ -32,8 +37,8 @@ export default function Pricing() {
             <p className="text-on-surface-variant text-sm">Best for blogs, portfolios, and marketing sites.</p>
           </div>
           <div className="mb-8">
-            <span className="text-4xl font-extrabold">$1,499</span>
-            <span className="text-on-surface-variant text-sm">/start</span>
+            <span className="text-4xl font-extrabold">₹3,999</span>
+            <span className="text-on-surface-variant text-sm">+</span>
           </div>
           <ul className="space-y-4 mb-10 flex-grow">
             <li className="flex items-center gap-3 text-sm">
@@ -65,8 +70,8 @@ export default function Pricing() {
             <p className="text-on-surface-variant text-sm">Custom Full-Stack MERN or PHP/Laravel apps.</p>
           </div>
           <div className="mb-8">
-            <span className="text-4xl font-extrabold text-secondary">$4,999</span>
-            <span className="text-on-surface-variant text-sm">/start</span>
+            <span className="text-4xl font-extrabold text-secondary">₹19,999</span>
+            <span className="text-on-surface-variant text-sm">+</span>
           </div>
           <ul className="space-y-4 mb-10 flex-grow">
             <li className="flex items-center gap-3 text-sm font-medium">
@@ -97,8 +102,8 @@ export default function Pricing() {
             <p className="text-on-surface-variant text-sm">Native iOS & Android mobile experiences.</p>
           </div>
           <div className="mb-8">
-            <span className="text-4xl font-extrabold">$8,499</span>
-            <span className="text-on-surface-variant text-sm">/start</span>
+            <span className="text-4xl font-extrabold">₹29,999</span>
+            <span className="text-on-surface-variant text-sm">+</span>
           </div>
           <ul className="space-y-4 mb-10 flex-grow">
             <li className="flex items-center gap-3 text-sm">
@@ -235,7 +240,7 @@ export default function Pricing() {
         </div>
         <h2 className="font-headline text-4xl md:text-5xl font-extrabold mb-6 relative z-10">Ready to transform your <br/>digital footprint?</h2>
         <p className="text-on-surface-variant max-w-xl mx-auto mb-10 text-lg relative z-10">
-          Join over 200+ companies that have scaled their operations with Lumina Noir’s premium development ecosystem.
+          Join over 200+ companies that have scaled their operations with Webor Studio's premium development ecosystem.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
           <button className="bg-white text-black px-10 py-4 rounded-full font-bold uppercase tracking-widest hover:scale-105 transition-all shadow-xl">Get Started Now</button>

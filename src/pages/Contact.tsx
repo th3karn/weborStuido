@@ -1,8 +1,13 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
 export default function Contact() {
   return (
     <main className="pt-24 pb-20 px-6 md:px-24">
+      <Helmet>
+        <title>Contact | Webor Studio</title>
+        <meta name="description" content="Reach out to Webor Studio for professional website and app development services." />
+      </Helmet>
       {/* Hero Section */}
       <section className="max-w-6xl mx-auto mb-24 text-center md:text-left">
         <span className="text-secondary font-manrope font-bold tracking-[0.3em] uppercase text-xs mb-4 block">Initiate Contact</span>
@@ -62,7 +67,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-1">Direct Inquiries</p>
-                  <a className="text-lg md:text-xl font-medium hover:text-primary transition-colors break-all" href="mailto:hello@luminanoir.digital">hello@luminanoir.digital</a>
+                  <a className="text-lg md:text-xl font-medium hover:text-primary transition-colors break-all" href="mailto:hello@weborstudio.com">hello@weborstudio.com</a>
                 </div>
               </div>
               <div className="flex items-start gap-6">
@@ -79,10 +84,10 @@ export default function Contact() {
             <div className="mt-12 pt-10 border-t border-outline-variant/10">
               <p className="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-6">Social Terminal</p>
               <div className="flex gap-4">
-                <a className="w-14 h-14 rounded-2xl bg-surface-container-highest flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all hover:-translate-y-1" href="#">
+                <a className="w-14 h-14 rounded-2xl bg-surface-container-highest flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all hover:-translate-y-1" href="https://instagram.com/webor_studio" target="_blank" rel="noopener noreferrer">
                   <span className="material-symbols-outlined">camera</span>
                 </a>
-                <a className="w-14 h-14 rounded-2xl bg-surface-container-highest flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all hover:-translate-y-1" href="#">
+                <a className="w-14 h-14 rounded-2xl bg-surface-container-highest flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all hover:-translate-y-1" href="https://youtube.com/@webor_studio" target="_blank" rel="noopener noreferrer">
                   <span className="material-symbols-outlined">play_circle</span>
                 </a>
                 <a className="w-14 h-14 rounded-2xl bg-surface-container-highest flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all hover:-translate-y-1" href="#">

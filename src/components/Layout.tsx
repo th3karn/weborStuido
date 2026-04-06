@@ -53,7 +53,7 @@ export const Layout = () => {
       <nav className="fixed top-0 w-full z-50 bg-surface-bright/40 backdrop-blur-2xl shadow-[0_0_40px_rgba(151,169,255,0.06)]">
         <div className="flex justify-between items-center px-6 md:px-12 py-6 max-w-[1920px] mx-auto">
           <Link to="/" className="text-2xl font-black tracking-tighter text-[#97a9ff]">
-            Lumina Noir
+            Webor Studio
           </Link>
           <div className="hidden md:flex gap-8 font-manrope tracking-tight text-sm font-medium uppercase font-headline">
             <Link to="/" className={`${isActive('/') ? 'text-[#c180ff] border-b-2 border-[#c180ff] pb-1' : 'text-[#adaaab] hover:text-white transition-colors'}`}>Home</Link>
@@ -79,15 +79,15 @@ export const Layout = () => {
       <footer className="w-full rounded-t-[3rem] mt-24 bg-[#1a191b]">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 px-6 md:px-24 py-20 w-full max-w-[1920px] mx-auto">
           <div className="col-span-1">
-            <div className="text-xl font-bold text-white mb-6 font-headline">Lumina Noir</div>
+            <div className="text-xl font-bold text-white mb-6 font-headline">Webor Studio</div>
             <p className="font-inter text-xs text-[#adaaab] max-w-[200px]">Curating digital experiences that redefine the standards of luxury and performance.</p>
           </div>
           <div className="col-span-1 space-y-4">
             <h5 className="text-white font-semibold text-sm uppercase tracking-widest font-headline">Connect</h5>
             <ul className="space-y-2">
-              <li><a className="font-inter text-xs text-[#adaaab] hover:text-[#c180ff] transition-transform hover:translate-y-[-2px] block" href="#">Instagram</a></li>
+              <li><a className="font-inter text-xs text-[#adaaab] hover:text-[#c180ff] transition-transform hover:translate-y-[-2px] block" href="https://instagram.com/webor_studio" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+              <li><a className="font-inter text-xs text-[#adaaab] hover:text-[#c180ff] transition-transform hover:translate-y-[-2px] block" href="https://youtube.com/@webor_studio" target="_blank" rel="noopener noreferrer">YouTube</a></li>
               <li><a className="font-inter text-xs text-[#adaaab] hover:text-[#c180ff] transition-transform hover:translate-y-[-2px] block" href="#">LinkedIn</a></li>
-              <li><a className="font-inter text-xs text-[#adaaab] hover:text-[#c180ff] transition-transform hover:translate-y-[-2px] block" href="#">Twitter (X)</a></li>
             </ul>
           </div>
           <div className="col-span-1 space-y-4">
@@ -100,11 +100,11 @@ export const Layout = () => {
           </div>
           <div className="col-span-1 space-y-4">
             <h5 className="text-white font-semibold text-sm uppercase tracking-widest font-headline">Contact</h5>
-            <p className="font-inter text-xs text-[#adaaab]">hello@luminanoir.digital</p>
-            <p className="font-inter text-xs text-[#adaaab]">Studio 14, Arts District<br/>San Francisco, CA</p>
+            <p className="font-inter text-xs text-[#adaaab]">hello@weborstudio.com</p>
+            <p className="font-inter text-xs text-[#adaaab]">New York<br/>Global Agency</p>
           </div>
           <div className="col-span-1 md:col-span-4 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="font-inter text-xs text-[#adaaab]">© 2024 Lumina Noir Digital. All Rights Reserved.</p>
+            <p className="font-inter text-xs text-[#adaaab]">© 2024 Webor Studio. All Rights Reserved.</p>
             <div className="flex gap-8">
               <button 
                 onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}

@@ -1,8 +1,13 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
 export default function About() {
   return (
     <main className="pt-32">
+      <Helmet>
+        <title>About Webor Studio | Development Agency</title>
+        <meta name="description" content="Webor Studio bridges the gap between functional code and editorial elegance for clients." />
+      </Helmet>
       {/* Hero Section: The Genesis */}
       <section className="px-6 md:px-12 mb-32">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
@@ -12,7 +17,7 @@ export default function About() {
               Crafting the <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Invisible</span> Standard.
             </h1>
             <p className="text-on-surface-variant text-lg md:text-xl leading-relaxed max-w-xl mb-10">
-              Founded in the intersection of architectural precision and digital alchemy, Lumina Noir was born to bridge the gap between functional code and editorial elegance.
+              Founded in the intersection of architectural precision and digital alchemy, Webor Studio was born to bridge the gap between functional code and editorial elegance.
             </p>
             <div className="flex gap-4">
               <div className="flex flex-col">

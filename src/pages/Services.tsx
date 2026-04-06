@@ -1,15 +1,20 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 
 export default function Services() {
   return (
     <main className="relative pt-32">
+      <Helmet>
+        <title>Web Development & App Services | Webor Studio</title>
+        <meta name="description" content="Get high-quality websites and apps at affordable pricing with modern UI and fast delivery." />
+      </Helmet>
       {/* Hero Section */}
       <section className="px-12 py-24 max-w-[1920px] mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
             <span className="inline-block px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary font-label text-xs tracking-widest uppercase font-bold">Expertise Redefined</span>
             <h1 className="text-[clamp(3.5rem,8vw,5.5rem)] leading-[1.05] font-headline font-extrabold tracking-tighter text-white">
-              The <span className="text-primary italic">Luminescent</span> Agency Core.
+              The <span className="text-primary italic">Webor Studio</span> Agency Core.
             </h1>
             <p className="text-on-surface-variant text-xl max-w-xl leading-relaxed font-light font-body">
               We don't just build products; we curate digital experiences that vibrate with energy. From high-performance web apps to AI-driven intelligence.
