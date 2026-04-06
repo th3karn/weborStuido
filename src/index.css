@@ -108,4 +108,6 @@ html.lenis, html.lenis body {
 
 .text-gradient { background: linear-gradient(45deg, #97a9ff, #c180ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .glass-card { background: rgba(38, 38, 39, 0.6); backdrop-filter: blur(24px); }
+.glass-panel { background: rgba(44, 44, 45, 0.4); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+.magnetic-hover:hover { transform: translate(0, -4px); }
 

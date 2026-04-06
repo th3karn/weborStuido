@@ -78,43 +78,40 @@ export const Layout = () => {
       {/* Footer */}
       <footer className="w-full rounded-t-[3rem] mt-24 bg-[#1a191b]">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 px-6 md:px-24 py-20 w-full max-w-[1920px] mx-auto">
-          <div className="col-span-1 md:col-span-4 lg:col-span-1">
+          <div className="col-span-1">
             <div className="text-xl font-bold text-white mb-6 font-headline">Lumina Noir</div>
-            <p className="font-inter text-xs text-[#adaaab] leading-relaxed">
-              Architecting premium digital experiences through elite software engineering and curated design strategies.
-            </p>
+            <p className="font-inter text-xs text-[#adaaab] max-w-[200px]">Curating digital experiences that redefine the standards of luxury and performance.</p>
           </div>
-          <div className="col-span-1 md:col-span-2 lg:col-span-1">
-            <h5 className="text-white font-bold text-sm mb-6 font-headline">Products</h5>
-            <div className="flex flex-col gap-3 font-inter text-xs text-[#adaaab]">
-              <Link className="hover:text-[#c180ff] transition-colors" to="/services">Frameworks</Link>
-              <Link className="hover:text-[#c180ff] transition-colors" to="/services">Consulting</Link>
-              <Link className="hover:text-[#c180ff] transition-colors" to="/services">App Dev</Link>
-            </div>
+          <div className="col-span-1 space-y-4">
+            <h5 className="text-white font-semibold text-sm uppercase tracking-widest font-headline">Connect</h5>
+            <ul className="space-y-2">
+              <li><a className="font-inter text-xs text-[#adaaab] hover:text-[#c180ff] transition-transform hover:translate-y-[-2px] block" href="#">Instagram</a></li>
+              <li><a className="font-inter text-xs text-[#adaaab] hover:text-[#c180ff] transition-transform hover:translate-y-[-2px] block" href="#">LinkedIn</a></li>
+              <li><a className="font-inter text-xs text-[#adaaab] hover:text-[#c180ff] transition-transform hover:translate-y-[-2px] block" href="#">Twitter (X)</a></li>
+            </ul>
           </div>
-          <div className="col-span-1 md:col-span-2 lg:col-span-1">
-            <h5 className="text-white font-bold text-sm mb-6 font-headline">Resources</h5>
-            <div className="flex flex-col gap-3 font-inter text-xs text-[#adaaab]">
-              <Link className="hover:text-[#c180ff] transition-colors" to="/privacy">Privacy Policy</Link>
-              <Link className="hover:text-[#c180ff] transition-colors" to="/terms">Terms of Service</Link>
-              <Link className="hover:text-[#c180ff] transition-colors" to="/cookie">Cookie Policy</Link>
-              <Link className="hover:text-[#c180ff] transition-colors" to="/contact">Contact Us</Link>
-            </div>
+          <div className="col-span-1 space-y-4">
+            <h5 className="text-white font-semibold text-sm uppercase tracking-widest font-headline">Legal</h5>
+            <ul className="space-y-2">
+              <li><Link className="font-inter text-xs text-[#adaaab] hover:text-[#c180ff] transition-transform hover:translate-y-[-2px] block" to="/privacy">Privacy Policy</Link></li>
+              <li><Link className="font-inter text-xs text-[#adaaab] hover:text-[#c180ff] transition-transform hover:translate-y-[-2px] block" to="/terms">Terms of Service</Link></li>
+              <li><Link className="font-inter text-xs text-[#adaaab] hover:text-[#c180ff] transition-transform hover:translate-y-[-2px] block" to="/cookie">Cookie Policy</Link></li>
+            </ul>
           </div>
-          <div className="col-span-1 md:col-span-4 lg:col-span-1">
-            <h5 className="text-white font-bold text-sm mb-6 font-headline">Newsletter</h5>
-            <div className="flex gap-2">
-              <input 
-                className="bg-surface-container-highest border-none rounded-full px-4 py-2 text-xs w-full focus:ring-1 focus:ring-primary text-white" 
-                placeholder="Email Address" 
-                type="email"
-              />
-              <button className="bg-primary text-on-primary rounded-full p-2 hover:scale-110 transition-all flex items-center justify-center">
-                <span className="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+          <div className="col-span-1 space-y-4">
+            <h5 className="text-white font-semibold text-sm uppercase tracking-widest font-headline">Contact</h5>
+            <p className="font-inter text-xs text-[#adaaab]">hello@luminanoir.digital</p>
+            <p className="font-inter text-xs text-[#adaaab]">Studio 14, Arts District<br/>San Francisco, CA</p>
+          </div>
+          <div className="col-span-1 md:col-span-4 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="font-inter text-xs text-[#adaaab]">© 2024 Lumina Noir Digital. All Rights Reserved.</p>
+            <div className="flex gap-8">
+              <button 
+                onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}
+                className="font-inter text-xs text-[#adaaab] hover:text-white"
+              >
+                Back to top
               </button>
-            </div>
-            <div className="mt-8 font-inter text-[10px] text-[#adaaab]">
-              © 2024 Lumina Noir Digital. All Rights Reserved.
             </div>
           </div>
         </div>
