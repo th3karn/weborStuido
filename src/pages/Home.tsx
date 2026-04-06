@@ -1,226 +1,294 @@
-import React, { useEffect, useRef, Suspense, lazy } from "react";
+import React, { Suspense, lazy } from "react";
 import { Link } from "react-router-dom";
 import { ErrorBoundary } from "../components/ErrorBoundary";
 import { WebGLFallback } from "../components/WebGLFallback";
 const ThreeBackground = lazy(() => import("../components/ThreeBackground"));
-import { MagneticButton } from "../components/MagneticButton";
-import { TechSlider } from "../components/ui/TechSlider";
-import { GlassCard } from "../components/ui/GlassCard";
-import { ProcessTimeline } from "../components/ui/ProcessTimeline";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
-import gsap from "gsap";
-import 'swiper/css';
-import 'swiper/css/effect-fade';
-import 'swiper/css/pagination';
-import { ArrowRight, Star, Code, Layers, Smartphone, Globe, Check } from "lucide-react";
 
 export default function Home() {
-  const containerRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      try {
-        gsap.fromTo(".gsap-fade-up",
-          { y: 60, opacity: 0 },
-          {
-            y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: "power3.out",
-            scrollTrigger: { trigger: ".services-section", start: "top 75%" }
-          }
-        );
-      } catch (error) {
-        console.error("GSAP Initialization failed, falling back to static UI:", error);
-      }
-    }, containerRef);
-    return () => ctx.revert();
-  }, []);
-
-  const services = [
-    { title: "UI/UX Design", desc: "Apple-tier digital aesthetics and intuitive user journeys.", icon: <Layers size={28}/>, glow: "blue" as const },
-    { title: "Web Engineering", desc: "High-performance React & Next.js architectures.", icon: <Code size={28}/>, glow: "cyan" as const },
-    { title: "Mobile Apps", desc: "Native scalable solutions for global audiences.", icon: <Smartphone size={28}/>, glow: "purple" as const },
-    { title: "Enterprise Systems", desc: "Robust cloud-first backends and AI integrations.", icon: <Globe size={28}/>, glow: "none" as const },
-  ];
-
   return (
-    <div className="w-full relative bg-background" ref={containerRef}>
+    <div className="w-full relative">
       {/* Hero Section */}
-      <section className="relative h-screen min-h-[800px] w-full flex items-center justify-center overflow-hidden">
-        <ErrorBoundary fallback={<WebGLFallback />}>
-          <Suspense fallback={<WebGLFallback />}>
-            <ThreeBackground />
-          </Suspense>
-        </ErrorBoundary>
-        
-        <div className="relative z-10 text-center px-6 max-w-6xl mx-auto flex flex-col items-center justify-center h-full pointer-events-none pb-20 mt-20">
-          <div className="animate-fade-in-up opacity-0 [animation-delay:200ms] mb-8 px-5 py-2 rounded-full border border-blue-500/20 bg-blue-500/10 backdrop-blur-xl text-sm font-semibold tracking-wider text-blue-200 uppercase shadow-[0_0_20px_rgba(59,130,246,0.15)] flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
-            Global Digital Agency
-          </div>
-          <h1 className="animate-fade-in-up opacity-0 [animation-delay:400ms] text-5xl md:text-7xl lg:text-[6.5rem] font-bold tracking-tighter mb-8 leading-[1.05]">
-            We Build Web & Apps That <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 font-display italic pr-2">Convert.</span>
-          </h1>
-          <p className="animate-fade-in-up opacity-0 [animation-delay:600ms] text-lg md:text-2xl text-white/60 max-w-3xl mx-auto mb-10 font-light">
-            At Webor Studio, we don't just design websites — we create high-performing digital products that help businesses grow online.
-          </p>
-          
-          <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-12 animate-fade-in-up opacity-0 [animation-delay:700ms] text-sm text-white/70 font-medium">
-            <span className="flex items-center gap-2"><Check size={16} className="text-blue-400" /> Fast Delivery</span>
-            <span className="flex items-center gap-2"><Check size={16} className="text-blue-400" /> Secure Code</span>
-            <span className="flex items-center gap-2"><Check size={16} className="text-blue-400" /> SEO Ready</span>
-          </div>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pointer-events-auto animate-fade-in-up opacity-0 [animation-delay:800ms]">
-            <Link to="/contact">
-              <MagneticButton>
-                <button className="px-10 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full text-lg flex items-center gap-3 group transition-colors shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(34,211,238,0.5)]">
-                  Get a Quote <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-              </MagneticButton>
-            </Link>
-            <Link to="/pricing">
-              <MagneticButton>
-                <button className="px-10 py-4 bg-white/5 border border-white/10 rounded-full text-white text-lg hover:bg-white/10 transition-colors">
-                  View Pricing
-                </button>
-              </MagneticButton>
-            </Link>
-          </div>
-        </div>
-        
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 animate-bounce pointer-events-none">
-          <span className="text-xs uppercase tracking-widest">Scroll</span>
-          <div className="w-[1px] h-8 bg-gradient-to-b from-white to-transparent" />
-        </div>
-      </section>
-
-      {/* Tech Stack Slider */}
-      <TechSlider />
-
-      {/* Services Section */}
-      <section className="services-section py-40 md:py-48 px-6 md:px-12 max-w-7xl mx-auto relative z-10">
-        <div className="mb-32 text-center md:text-left flex flex-col md:flex-row justify-between items-end gap-12">
-          <div className="max-w-2xl">
-            <h2 className="gsap-fade-up text-5xl md:text-7xl font-bold mb-6 tracking-tight">World-Class <br/><span className="text-gradient">Capabilities.</span></h2>
-            <p className="gsap-fade-up text-white/50 text-xl font-light leading-relaxed">We deliver end-to-end digital excellence. From concept to deployment, we build highly scalable and visually stunning solutions.</p>
-          </div>
-          <Link to="/services" className="shrink-0 hidden md:block">
-            <MagneticButton>
-              <button className="gsap-fade-up px-8 py-4 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 transition-colors">
-                View All Services
-              </button>
-            </MagneticButton>
-          </Link>
+      <section className="relative pt-40 pb-24 overflow-hidden px-6 md:px-12 min-h-screen flex items-center">
+        {/* Particle Background Simulation */}
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary blur-[120px] rounded-full"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary blur-[120px] rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-          {services.map((srv, i) => (
-            <GlassCard key={i} glow={srv.glow} className="gsap-fade-up p-8 md:p-10 group cursor-pointer">
-              <div className="w-16 h-16 rounded-2xl bg-white/[0.03] border border-white/10 flex items-center justify-center text-primary mb-8 group-hover:scale-110 group-hover:bg-primary/10 transition-all duration-500">
-                {srv.icon}
-              </div>
-              <h3 className="text-2xl font-semibold mb-4 text-white group-hover:text-primary transition-colors">{srv.title}</h3>
-              <p className="text-white/50 text-lg font-light leading-relaxed">{srv.desc}</p>
-            </GlassCard>
-          ))}
-        </div>
-      </section>
-
-      {/* Our Process Timeline */}
-      <div className="my-20">
-        <ProcessTimeline />
-      </div>
-
-      {/* Testimonials */}
-      <section className="py-48 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          <div className="text-center mb-28">
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">Trusted <span className="text-gradient italic pr-2">Globally</span></h2>
-            <p className="text-white/50 text-xl">Don't just take our word for it.</p>
-          </div>
-          
-          <div className="max-w-4xl mx-auto">
-            <Swiper
-              modules={[Autoplay, EffectFade, Pagination]}
-              spaceBetween={40}
-              slidesPerView={1}
-              autoplay={{ delay: 6000, disableOnInteraction: false }}
-              pagination={{ clickable: true, dynamicBullets: true }}
-              loop={true}
-              effect="fade"
-              className="w-full pb-16"
-            >
-              {[1, 2, 3].map((_, i) => (
-                <SwiperSlide key={i}>
-                  <GlassCard className="p-8 md:p-12 !rounded-[2rem] text-center flex flex-col items-center">
-                    <div className="flex justify-center gap-2 text-primary mb-8">
-                      {[1,2,3,4,5].map(s => <Star key={s} fill="currentColor" size={20} className="drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]" />)}
-                    </div>
-                    <p className="text-xl md:text-3xl text-white/90 font-medium leading-normal mb-10 max-w-3xl">
-                      "Webor Studio fundamentally transformed our digital presence. The 3D integration and UI aesthetics are simply unmatched in the industry today."
-                    </p>
-                    <div className="flex items-center gap-6">
-                      <div className="w-14 h-14 rounded-full bg-white/10 overflow-hidden border border-white/20">
-                        <img src={`https://i.pravatar.cc/150?img=${i+10}`} alt="Avatar" className="w-full h-full object-cover" />
-                      </div>
-                      <div className="text-left">
-                        <h4 className="text-lg font-semibold text-white">Sarah Jenkins</h4>
-                        <p className="text-sm text-white/50">CTO, GlobalTech Innovations</p>
-                      </div>
-                    </div>
-                  </GlassCard>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-        </div>
-      </section>
-
-      {/* Ultimate CTA Portal Section */}
-      <section className="py-40 px-6 md:px-12 relative z-10 mb-32 cursor-default">
-        <div className="max-w-5xl mx-auto relative group">
-          {/* External Massive Glow */}
-          <div className="absolute -inset-3 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-[4rem] blur-[100px] opacity-20 group-hover:opacity-40 transition-opacity duration-1000 z-0"></div>
-          
-          <div className="relative text-center py-20 px-6 md:px-16 !rounded-[3rem] bg-[#0a0a0a]/80 backdrop-blur-3xl border border-white/10 overflow-hidden shadow-2xl z-10">
-            {/* Internal Animated Nebulas */}
-            <div className="absolute top-0 left-0 w-[350px] h-[350px] bg-purple-500/20 blur-[120px] rounded-full pointer-events-none mix-blend-screen animate-pulse"></div>
-            <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-cyan-500/20 blur-[120px] rounded-full pointer-events-none mix-blend-screen animate-pulse" style={{ animationDelay: '2s' }}></div>
-
-            {/* Decorative Grid/Lines */}
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:30px_30px] [mask-image:radial-gradient(circle,white,transparent_80%)] opacity-30 pointer-events-none"></div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center relative z-10 max-w-7xl mx-auto">
+          <div className="space-y-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-highest/60 border border-outline-variant/15">
+              <span className="flex h-2 w-2 rounded-full bg-tertiary shadow-[0_0_10px_#96f8ff]"></span>
+              <span className="text-xs font-semibold tracking-widest uppercase text-on-surface-variant font-label">Plans starting from ₹4,999 / $59</span>
+            </div>
             
-            <div className="relative z-20">
-              <span className="inline-block py-1.5 px-5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-blue-400 font-bold tracking-[0.2em] text-[10px] md:text-xs mb-8 uppercase shadow-[0_0_20px_rgba(59,130,246,0.3)]">
-                Instagram @webor_studio
-              </span>
-              <h2 className="text-4xl md:text-6xl lg:text-7xl font-black mb-6 tracking-tighter uppercase leading-[1.1] text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.2)]">
-                Grow Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Business</span> <br /> Online
-              </h2>
-              <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto mb-10 font-light">
-                Follow @webor_studio on Instagram for daily website demos, reels & offers. Professional quality, honest pricing, real results.
-              </p>
-              
-              <div className="relative inline-block group/btn cursor-pointer">
-                {/* Button Outer Glow */}
-                <div className="absolute -inset-2 bg-gradient-to-r from-blue-600 to-cyan-400 rounded-full blur-[15px] opacity-70 group-hover/btn:opacity-100 group-hover/btn:blur-[25px] transition-all duration-500 animate-pulse pointer-events-none"></div>
-                
-                <Link to="/contact" className="relative z-10 block">
-                  <MagneticButton>
-                    <button className="px-8 md:px-12 py-4 md:py-5 rounded-full bg-black/90 border border-white/20 text-white font-bold text-base md:text-lg tracking-wide uppercase overflow-hidden relative group-hover/btn:border-white/50 transition-all duration-500">
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-cyan-400/20 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500"></div>
-                      <span className="relative z-10 flex items-center justify-center gap-3">
-                        Start Your Project 
-                        <ArrowRight size={20} className="group-hover/btn:translate-x-2 transition-transform duration-300 shadow-[0_0_15px_currentColor]" />
-                      </span>
-                    </button>
-                  </MagneticButton>
-                </Link>
+            <h1 className="text-6xl md:text-8xl font-black font-headline leading-[0.9] tracking-tighter">
+              We Build <span className="text-transparent bg-clip-text kinetic-glow">Websites</span> That Convert.
+            </h1>
+            
+            <p className="text-xl text-on-surface-variant max-w-lg leading-relaxed font-body">
+              High-performance digital products engineered for growth. We blend editorial aesthetics with conversion-focused UX.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-6 pt-4">
+              <Link to="/contact">
+                <button className="kinetic-glow text-on-primary font-bold px-10 py-5 rounded-full text-lg shadow-[0_20px_40px_rgba(151,169,255,0.2)] magnetic-hover transition-all w-full sm:w-auto">
+                  Start Your Project
+                </button>
+              </Link>
+              <Link to="/portfolio">
+                <button className="px-10 py-5 rounded-full border border-outline-variant text-white font-semibold hover:bg-surface-variant transition-all font-body w-full sm:w-auto">
+                  View Portfolio
+                </button>
+              </Link>
+            </div>
+          </div>
+
+          <div className="relative group h-[500px] md:h-[600px] w-full">
+            <div className="absolute -inset-4 bg-gradient-to-tr from-primary/20 to-secondary/20 blur-3xl opacity-50 z-0"></div>
+            
+            {/* 3D Mockup Visuals (React Three Fiber Re-Integration) */}
+            <div className="absolute inset-0 z-10 transform md:rotate-[-5deg] group-hover:rotate-0 transition-transform duration-700">
+               <ErrorBoundary fallback={<WebGLFallback />}>
+                 <Suspense fallback={<WebGLFallback />}>
+                   <ThreeBackground />
+                 </Suspense>
+               </ErrorBoundary>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Bar */}
+      <section className="py-20 border-y border-outline-variant/10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <p className="text-center text-on-surface-variant text-sm font-bold uppercase tracking-[0.3em] mb-12 font-label">Trusted by global innovators</p>
+          <div className="flex flex-wrap justify-center items-center gap-16 md:gap-24 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+            <span className="text-2xl font-black font-headline">AETHER</span>
+            <span className="text-2xl font-black font-headline">VORTEX</span>
+            <span className="text-2xl font-black font-headline">LUMOS</span>
+            <span className="text-2xl font-black font-headline">PRISM</span>
+            <span className="text-2xl font-black font-headline">QUARK</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Services */}
+      <section className="py-32 px-6 md:px-12 bg-surface-container-low">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+            <div className="space-y-4">
+              <h2 className="text-5xl md:text-6xl font-black font-headline">Premium Services</h2>
+              <p className="text-on-surface-variant max-w-md font-body text-lg">Tailored solutions for businesses that refuse to settle for mediocrity.</p>
+            </div>
+            <Link to="/services" className="text-primary font-bold flex items-center gap-2 group font-label">
+              Explore All Services <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </Link>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Service Card 1 */}
+            <div className="glass-panel p-10 rounded-xl space-y-6 hover:translate-y-[-10px] transition-all duration-500 border border-outline-variant/10">
+              <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <span className="material-symbols-outlined text-primary text-4xl">web</span>
+              </div>
+              <h3 className="text-2xl font-bold font-headline">Web Development</h3>
+              <p className="text-on-surface-variant leading-relaxed font-body">Lightning-fast, accessible, and conversion-optimized web experiences built with Next.js & Tailwind.</p>
+            </div>
+            
+            {/* Service Card 2 */}
+            <div className="glass-panel p-10 rounded-xl space-y-6 hover:translate-y-[-10px] transition-all duration-500 border border-outline-variant/10">
+              <div className="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center">
+                <span className="material-symbols-outlined text-secondary text-4xl">smartphone</span>
+              </div>
+              <h3 className="text-2xl font-bold font-headline">Mobile Apps</h3>
+              <p className="text-on-surface-variant leading-relaxed font-body">Native-feel cross-platform applications that live in your customers' pockets. iOS and Android ready.</p>
+            </div>
+            
+            {/* Service Card 3 */}
+            <div className="glass-panel p-10 rounded-xl space-y-6 hover:translate-y-[-10px] transition-all duration-500 border border-outline-variant/10">
+              <div className="w-16 h-16 rounded-2xl bg-tertiary/10 flex items-center justify-center">
+                <span className="material-symbols-outlined text-tertiary text-4xl">auto_awesome</span>
+              </div>
+              <h3 className="text-2xl font-bold font-headline">Digital Brand</h3>
+              <p className="text-on-surface-variant leading-relaxed font-body">Motion-driven brand identities that stand out in a crowded digital landscape. Design that breathes life.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-32 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+          <div className="relative">
+            <img alt="Team Collaboration" className="rounded-xl object-cover h-[500px] w-full" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" />
+            <div className="absolute -bottom-10 -right-10 glass-panel p-8 rounded-xl border border-outline-variant/10 hidden md:block">
+              <div className="text-5xl font-black text-primary font-headline">99%</div>
+              <p className="text-sm font-bold uppercase tracking-wider text-on-surface-variant font-label">Client Retention Rate</p>
+            </div>
+          </div>
+          
+          <div className="space-y-10">
+            <h2 className="text-5xl md:text-6xl font-black font-headline">The Lumina Advantage</h2>
+            <div className="space-y-8">
+              <div className="flex gap-6">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full kinetic-glow flex items-center justify-center">
+                  <span className="material-symbols-outlined text-on-primary">speed</span>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold font-headline mb-2">Unmatched Speed</h4>
+                  <p className="text-on-surface-variant font-body">We ship quality 2x faster than traditional agencies using our modular architecture.</p>
+                </div>
+              </div>
+              <div className="flex gap-6">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full kinetic-glow flex items-center justify-center">
+                  <span className="material-symbols-outlined text-on-primary">security</span>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold font-headline mb-2">Secure by Default</h4>
+                  <p className="text-on-surface-variant font-body">Enterprise-grade security protocols implemented from the first line of code.</p>
+                </div>
+              </div>
+              <div className="flex gap-6">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full kinetic-glow flex items-center justify-center">
+                  <span className="material-symbols-outlined text-on-primary">monetization_on</span>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold font-headline mb-2">Transparent Pricing</h4>
+                  <p className="text-on-surface-variant font-body">No hidden fees. Flat rates for defined projects and clear hourly for retainers.</p>
+                </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="py-32 px-6 md:px-12 bg-surface-container">
+        <div className="max-w-7xl mx-auto text-center mb-20 space-y-6">
+          <h2 className="text-5xl md:text-6xl font-black font-headline">Invest in Growth</h2>
+          <p className="text-on-surface-variant max-w-xl mx-auto font-body text-lg">Scalable packages designed to evolve with your business from startup to enterprise.</p>
+        </div>
+        
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Tier 1 */}
+          <div className="bg-background p-12 rounded-xl border border-outline-variant/10 space-y-8 flex flex-col hover:border-primary/30 transition-all">
+            <div className="space-y-2">
+              <h3 className="text-xl font-bold font-headline">Startup Launch</h3>
+              <div className="text-4xl font-black font-headline">₹4,999<span className="text-lg text-on-surface-variant font-normal">/mo</span></div>
+            </div>
+            <ul className="space-y-4 text-on-surface-variant flex-grow font-body">
+              <li className="flex items-center gap-3"><span className="material-symbols-outlined text-primary text-sm">check_circle</span> 3-Page Responsive Website</li>
+              <li className="flex items-center gap-3"><span className="material-symbols-outlined text-primary text-sm">check_circle</span> SEO Optimization</li>
+              <li className="flex items-center gap-3"><span className="material-symbols-outlined text-primary text-sm">check_circle</span> 1 Month Support</li>
+            </ul>
+            <button className="w-full py-4 rounded-full border border-outline-variant font-bold hover:bg-surface-variant transition-all font-body">Get Started</button>
+          </div>
+          
+          {/* Tier 2 (Most Popular) */}
+          <div className="bg-surface-container-highest p-12 rounded-xl border-2 border-secondary relative space-y-8 flex flex-col transform md:scale-105 shadow-[0_0_60px_rgba(193,128,255,0.1)]">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 kinetic-glow text-on-primary text-[10px] uppercase font-black px-4 py-1 rounded-full tracking-[0.2em] font-label">Most Popular</div>
+            <div className="space-y-2">
+              <h3 className="text-xl font-bold font-headline">Business Growth</h3>
+              <div className="text-4xl font-black font-headline">₹24,999<span className="text-lg text-on-surface-variant font-normal">/mo</span></div>
+            </div>
+            <ul className="space-y-4 text-on-surface-variant flex-grow font-body">
+              <li className="flex items-center gap-3 text-white"><span className="material-symbols-outlined text-secondary text-sm">check_circle</span> Full CMS Integration</li>
+              <li className="flex items-center gap-3 text-white"><span className="material-symbols-outlined text-secondary text-sm">check_circle</span> E-commerce Setup</li>
+              <li className="flex items-center gap-3 text-white"><span className="material-symbols-outlined text-secondary text-sm">check_circle</span> Conversion Funnels</li>
+              <li className="flex items-center gap-3 text-white"><span className="material-symbols-outlined text-secondary text-sm">check_circle</span> Advanced Analytics</li>
+            </ul>
+            <button className="w-full py-4 rounded-full kinetic-glow text-on-primary font-bold shadow-lg magnetic-hover transition-all font-body">Select Plan</button>
+          </div>
+          
+          {/* Tier 3 */}
+          <div className="bg-background p-12 rounded-xl border border-outline-variant/10 space-y-8 flex flex-col hover:border-tertiary/30 transition-all">
+            <div className="space-y-2">
+              <h3 className="text-xl font-bold font-headline">Enterprise</h3>
+              <div className="text-4xl font-black font-headline">$799+<span className="text-lg text-on-surface-variant font-normal">/mo</span></div>
+            </div>
+            <ul className="space-y-4 text-on-surface-variant flex-grow font-body">
+              <li className="flex items-center gap-3"><span className="material-symbols-outlined text-tertiary text-sm">check_circle</span> Custom App Development</li>
+              <li className="flex items-center gap-3"><span className="material-symbols-outlined text-tertiary text-sm">check_circle</span> Multi-Platform Support</li>
+              <li className="flex items-center gap-3"><span className="material-symbols-outlined text-tertiary text-sm">check_circle</span> Dedicated Project Manager</li>
+              <li className="flex items-center gap-3"><span className="material-symbols-outlined text-tertiary text-sm">check_circle</span> 24/7 Priority Support</li>
+            </ul>
+            <Link to="/contact"><button className="w-full py-4 rounded-full border border-outline-variant font-bold hover:bg-surface-variant transition-all font-body">Contact Sales</button></Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Slider */}
+      <section className="py-32 px-6 md:px-12 overflow-hidden">
+        <div className="max-w-7xl mx-auto space-y-16">
+          <div className="flex justify-between items-center">
+            <h2 className="text-5xl md:text-6xl font-black font-headline">Client Stories</h2>
+            <div className="flex gap-4">
+              <button className="w-14 h-14 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-variant transition-all"><span className="material-symbols-outlined">chevron_left</span></button>
+              <button className="w-14 h-14 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-variant transition-all"><span class="material-symbols-outlined">chevron_right</span></button>
+            </div>
+          </div>
+          
+          <div className="flex gap-8 overflow-x-auto no-scrollbar pb-12 cursor-grab">
+            {/* Testimonial 1 */}
+            <div className="flex-shrink-0 w-full sm:w-[500px] md:w-[600px] glass-panel p-12 rounded-xl space-y-8 border border-outline-variant/10">
+              <div className="flex gap-1 text-secondary">
+                <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
+                <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
+                <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
+                <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
+                <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
+              </div>
+              <p className="text-xl md:text-2xl font-medium leading-relaxed italic text-white font-body">"Lumina Noir transformed our outdated platform into a high-converting masterpiece. Our sales increased by 40% within the first month of launch."</p>
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-primary to-secondary"></div>
+                <div>
+                  <h5 className="font-bold font-headline">Sarah Chen</h5>
+                  <p className="text-sm text-on-surface-variant font-body">CEO, TechFlow Solutions</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial 2 */}
+            <div className="flex-shrink-0 w-full sm:w-[500px] md:w-[600px] glass-panel p-12 rounded-xl space-y-8 border border-outline-variant/10">
+              <div className="flex gap-1 text-secondary">
+                <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
+                <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
+                <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
+                <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
+                <span className="material-symbols-outlined" style={{fontVariationSettings: "'FILL' 1"}}>star</span>
+              </div>
+              <p className="text-xl md:text-2xl font-medium leading-relaxed italic text-white font-body">"The speed of execution was incredible. We went from a concept wireframe to a fully functional MVP in just 4 weeks."</p>
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-secondary to-tertiary"></div>
+                <div>
+                  <h5 className="font-bold font-headline">Marcus Thorne</h5>
+                  <p className="text-sm text-on-surface-variant font-body">Founder, Urban Pulse</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Let's Build CTA */}
+      <section className="py-32 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto kinetic-glow rounded-xl p-10 md:p-20 relative overflow-hidden text-center space-y-8 shadow-[0_30px_60px_-15px_rgba(193,128,255,0.3)]">
+          <div className="absolute inset-0 bg-black/20"></div>
+          <div className="relative z-10">
+            <h2 className="text-5xl md:text-7xl font-black font-headline text-on-primary tracking-tighter mb-4">Ready to Build Your Legacy?</h2>
+            <p className="text-on-primary/80 text-xl max-w-2xl mx-auto leading-relaxed font-body">Let's create something remarkable together. Our team is ready to scale your vision.</p>
+            <div className="flex justify-center pt-8">
+              <Link to="/contact">
+                <button className="bg-white text-on-primary-container font-black px-10 md:px-12 py-5 md:py-6 rounded-full text-lg md:text-xl shadow-2xl hover:scale-105 transition-transform duration-300 font-headline">
+                  Book Your Discovery Call
+                </button>
+              </Link>
+            </div>
+          </div>
+          {/* Abstract decorative shapes */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full blur-3xl -ml-32 -mb-32"></div>
         </div>
       </section>
     </div>

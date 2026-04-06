@@ -46,61 +46,76 @@ export const Layout = () => {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden selection:bg-primary/30">
-      <header className="fixed top-0 w-full z-50 glass-card border-b-0 py-4 px-6 md:px-12 transition-all duration-300">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link to="/" className="text-3xl font-semibold tracking-tighter text-gradient font-heading">
-            Webor<span className="text-white">Studio</span>.
-          </Link>
-          <nav className="hidden md:flex gap-8 text-lg font-medium text-white/70">
-            <Link to="/services" className="hover:text-white transition-colors">Services</Link>
-            <Link to="/pricing" className="hover:text-white transition-colors">Pricing</Link>
-            <Link to="/portfolio" className="hover:text-white transition-colors">Portfolio</Link>
-            <Link to="/about" className="hover:text-white transition-colors">About</Link>
-          </nav>
-          <div className="flex items-center gap-4">
-            <Link to="/contact" className="hidden md:flex px-8 py-3 text-lg rounded-full bg-blue-500/20 hover:bg-blue-500/40 text-white border border-blue-500/50 transition-all shadow-[0_0_15px_rgba(59,130,246,0.3)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)]">
-              Let's Talk
-            </Link>
+    <div className="min-h-screen bg-background text-on-surface overflow-x-hidden selection:bg-primary/30">
+      <nav className="fixed top-0 w-full z-50 bg-surface-bright/40 backdrop-blur-2xl shadow-[0_0_40px_rgba(151,169,255,0.06)]">
+        <div className="flex justify-between items-center px-6 md:px-12 py-6 max-w-[1920px] mx-auto">
+          <Link to="/" className="text-2xl font-black tracking-tighter text-[#97a9ff] font-headline">Lumina Noir</Link>
+          <div className="hidden md:flex gap-10 font-headline tracking-tight text-sm font-medium uppercase">
+            <Link to="/" className="text-[#c180ff] border-b-2 border-[#c180ff] pb-1">Home</Link>
+            <Link to="/services" className="text-[#adaaab] hover:text-white transition-colors">Services</Link>
+            <Link to="/pricing" className="text-[#adaaab] hover:text-white transition-colors">Pricing</Link>
+            <Link to="/portfolio" className="text-[#adaaab] hover:text-white transition-colors">Portfolio</Link>
+            <Link to="/about" className="text-[#adaaab] hover:text-white transition-colors">About</Link>
+            <Link to="/blog" className="text-[#adaaab] hover:text-white transition-colors">Blog</Link>
           </div>
+          <Link to="/contact">
+            <button className="bg-primary-container text-on-primary-container font-bold px-8 py-3 rounded-full hover:scale-105 transition-all duration-300 shadow-lg">
+              Get a Free Quote
+            </button>
+          </Link>
         </div>
-      </header>
+      </nav>
 
       <main className="relative z-10 w-full flex-grow pt-24">
         <Outlet />
       </main>
 
-      <footer className="w-full relative z-10 glass-card border-t border-white/10 pt-32 pb-12 px-6 md:px-12 mt-32">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1 md:col-span-2">
-            <h3 className="text-3xl font-semibold text-gradient mb-4">WeborStudio.</h3>
-            <p className="text-white/60 max-w-sm mb-6">
-              A premium, futuristic, and highly trustable global digital agency brand transforming ideas into digital reality.
+      <footer className="w-full rounded-t-[3rem] mt-24 bg-[#1a191b] pt-20">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 px-6 md:px-24 py-20 w-full max-w-[1920px] mx-auto">
+          <div className="space-y-6">
+            <div className="text-xl font-bold text-white font-headline">Lumina Noir</div>
+            <p className="text-[#adaaab] text-sm leading-relaxed font-body">
+              Crafting digital experiences that matter. From concept to code, we bring your vision to life with precision and purpose.
             </p>
+            <div className="flex gap-4">
+              <div className="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary transition-colors cursor-pointer">
+                <span className="material-symbols-outlined text-white text-xl">share</span>
+              </div>
+            </div>
           </div>
-          <div>
-            <h4 className="text-lg font-medium text-white mb-4">Company</h4>
-            <ul className="space-y-2 text-white/60">
-              <li><Link to="/about" className="hover:text-blue-400 transition-colors">About Us</Link></li>
-              <li><Link to="/portfolio" className="hover:text-blue-400 transition-colors">Portfolio</Link></li>
-              <li><Link to="/services" className="hover:text-blue-400 transition-colors">Services</Link></li>
-              <li><Link to="/pricing" className="hover:text-blue-400 transition-colors">Pricing</Link></li>
+          <div className="space-y-6">
+            <h6 className="text-white font-bold uppercase tracking-widest text-xs font-headline">Services</h6>
+            <ul className="space-y-3 font-body text-xs text-[#adaaab]">
+              <li className="hover:text-[#c180ff] cursor-pointer"><Link to="/services">Web Development</Link></li>
+              <li className="hover:text-[#c180ff] cursor-pointer"><Link to="/services">App Development</Link></li>
+              <li className="hover:text-[#c180ff] cursor-pointer"><Link to="/services">UI/UX Design</Link></li>
+              <li className="hover:text-[#c180ff] cursor-pointer"><Link to="/services">Digital Strategy</Link></li>
             </ul>
           </div>
-          <div>
-            <h4 className="text-lg font-medium text-white mb-4">Connect</h4>
-            <ul className="space-y-2 text-white/60">
-              <li><a href="https://instagram.com/webor_studio" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">Instagram</a></li>
-              <li><a href="https://youtube.com/@webor_studio" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors">YouTube</a></li>
-              <li><Link to="/contact" className="hover:text-blue-400 transition-colors">Contact Form</Link></li>
+          <div className="space-y-6">
+            <h6 className="text-white font-bold uppercase tracking-widest text-xs font-headline">Resources</h6>
+            <ul className="space-y-3 font-body text-xs text-[#adaaab]">
+              <li className="hover:text-[#c180ff] cursor-pointer"><Link to="/portfolio">Portfolio</Link></li>
+              <li className="hover:text-[#c180ff] cursor-pointer"><Link to="/about">Case Studies</Link></li>
+              <li className="hover:text-[#c180ff] cursor-pointer"><Link to="/blog">Blog</Link></li>
+              <li className="hover:text-[#c180ff] cursor-pointer">Tech Stack</li>
+            </ul>
+          </div>
+          <div className="space-y-6">
+            <h6 className="text-white font-bold uppercase tracking-widest text-xs font-headline">Contact</h6>
+            <ul className="space-y-3 font-body text-xs text-[#adaaab]">
+              <li className="flex items-center gap-2"><span className="material-symbols-outlined text-[14px]">mail</span> hello@luminanoir.digital</li>
+              <li className="flex items-center gap-2"><span className="material-symbols-outlined text-[14px]">call</span> +1 (555) 000-0000</li>
+              <li className="flex items-center gap-2"><span className="material-symbols-outlined text-[14px]">location_on</span> New York, Digital Nomads</li>
             </ul>
           </div>
         </div>
-        <div className="max-w-7xl mx-auto pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-white/40 text-sm">
-          <p>&copy; {new Date().getFullYear()} Webor Studio. All rights reserved.</p>
-          <div className="flex gap-4 mt-4 md:mt-0">
-            <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
-            <Link to="/terms-of-service" className="hover:text-primary transition-colors">Terms of Service</Link>
+        <div className="border-t border-outline-variant/10 px-6 md:px-24 py-10 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="font-body text-xs text-[#adaaab]">© 2024 Lumina Noir Digital. All Rights Reserved.</p>
+          <div className="flex gap-8 font-body text-xs text-[#adaaab]">
+            <Link className="hover:text-white font-semibold" to="/privacy">Privacy Policy</Link>
+            <Link className="hover:text-white" to="/terms">Terms of Service</Link>
+            <Link className="hover:text-white" to="/contact">Contact Us</Link>
           </div>
         </div>
       </footer>
