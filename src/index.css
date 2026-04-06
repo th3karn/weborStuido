@@ -107,4 +107,5 @@ html.lenis, html.lenis body {
 }
 
 .text-gradient { background: linear-gradient(45deg, #97a9ff, #c180ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.glass-card { background: rgba(38, 38, 39, 0.6); backdrop-filter: blur(24px); }
 
